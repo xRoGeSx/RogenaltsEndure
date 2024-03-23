@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://x6xc2u3p6mqu"]
+
+[ext_resource type="Texture2D" uid="uid://qvj23m7uywfv" path="res://character/Chibi/Knight/Idle.png" id="1_0lplq"]
+[ext_resource type="Script" path="res://Arc.gd" id="2_vdo7b"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0lplq")
+hframes = 6
+script = ExtResource("2_vdo7b")

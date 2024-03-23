@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbj7pociouqmj"]
+
+[ext_resource type="Script" path="res://Scenes/Graph/Edge.gd" id="1_bik6y"]
+
+[sub_resource type="Gradient" id="Gradient_4grcd"]
+offsets = PackedFloat32Array(0.0103093, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="Theme" id="Theme_t8xpx"]
+default_font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_hbww1"]
+line_spacing = 3.283
+font_size = 32
+outline_size = 4
+outline_color = Color(1, 0, 0, 1)
+
+[node name="Edge" type="Node2D"]
+script = ExtResource("1_bik6y")
+
+[node name="Line" type="Line2D" parent="."]
+points = PackedVector2Array(-112, 0, -104.419, 0, -98.0114, 0, -89.1117, 0, -81.9919, 0, -75.9002, 0, -67.3964, 0, -59.2086, 0, -51.7329, 0, -42.3731, 0, -34.1156, 0, -25.1452, 0, -13.6356, 0, -2.71939, 0, 6.25096, 0, 17.0154, 0, 30.4709, 0, 41.2353, 0, 51.5512, 0, 63.6611, 0, 76.2196, 0, 90.1237, 0, 104.476, 0, 117.483, 0, 129.145, 0, 144, 0)
+gradient = SubResource("Gradient_4grcd")
+
+[node name="Label" type="Label" parent="Line"]
+visible = false
+offset_left = -56.0
+offset_top = -32.0
+offset_right = 69.0
+offset_bottom = 38.0
+theme = SubResource("Theme_t8xpx")
+text = "Label"
+label_settings = SubResource("LabelSettings_hbww1")
+horizontal_alignment = 1
+vertical_alignment = 1

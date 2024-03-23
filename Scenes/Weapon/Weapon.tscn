@@ -1,0 +1,129 @@
+[gd_scene load_steps=18 format=3 uid="uid://domjxkkpwtu60"]
+
+[ext_resource type="Script" path="res://Scenes/Weapon/Weapon.gd" id="1_yl4yv"]
+[ext_resource type="Shader" path="res://Scenes/Weapon/Pixelate.gdshader" id="2_eatrc"]
+[ext_resource type="PackedScene" uid="uid://dbyimievtd5od" path="res://Behaivours/Knockback.tscn" id="3_yubm2"]
+[ext_resource type="ArrayMesh" uid="uid://buvrts80tsqe6" path="res://assets/Russian_Cossack_Shashqua_Saber.obj" id="4_7hosc"]
+[ext_resource type="PackedScene" uid="uid://b44jqla36ihvu" path="res://Behaivours/Damaging.tscn" id="4_vkekc"]
+[ext_resource type="ArrayMesh" uid="uid://c34g7fhxkmoho" path="res://assets/Axe/Military Axe.obj" id="5_yb5ig"]
+[ext_resource type="Texture2D" uid="uid://bbxqduvf4vpxh" path="res://assets/Axe/Textures/Military Axe_BaseColor.png" id="6_k0gxd"]
+[ext_resource type="Texture2D" uid="uid://jq8oa0j7ig7u" path="res://assets/Axe/Textures/Military Axe_Metallic.png" id="7_bxudd"]
+[ext_resource type="Texture2D" uid="uid://cegs1hxqemh88" path="res://assets/Axe/Textures/Military Axe_Normal.png" id="7_gl0yx"]
+[ext_resource type="Texture2D" uid="uid://e7tymqphxgb8" path="res://assets/Axe/Textures/Military Axe_Ambient Occlusion .png" id="7_niwom"]
+[ext_resource type="Texture2D" uid="uid://dfgcr33i8o7rb" path="res://assets/Axe/Textures/Military Axe_Roughness.png" id="9_o8s8i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3mchx"]
+shader = ExtResource("2_eatrc")
+shader_parameter/pixelSize = 6
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_qjp0r"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_01jcd"]
+radius = 15.873
+height = 95.2381
+
+[sub_resource type="Environment" id="Environment_ku5oy"]
+background_color = Color(0.796078, 0, 0, 1)
+background_energy_multiplier = 1.07
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.17
+ambient_light_energy = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fygp3"]
+albedo_color = Color(0.960784, 0.968627, 0.992157, 1)
+albedo_texture = ExtResource("6_k0gxd")
+metallic = 1.0
+metallic_specular = 0.31
+metallic_texture = ExtResource("7_bxudd")
+roughness_texture = ExtResource("9_o8s8i")
+normal_enabled = true
+normal_texture = ExtResource("7_gl0yx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_is37h"]
+albedo_color = Color(0.670588, 0.792157, 1, 1)
+albedo_texture = ExtResource("6_k0gxd")
+metallic = 0.87
+metallic_specular = 0.48
+metallic_texture = ExtResource("7_bxudd")
+metallic_texture_channel = 3
+roughness = 0.94
+roughness_texture = ExtResource("9_o8s8i")
+normal_enabled = true
+normal_scale = 1.28
+normal_texture = ExtResource("7_gl0yx")
+ao_enabled = true
+ao_light_affect = 0.22
+ao_texture = ExtResource("7_niwom")
+
+[node name="Weapon" type="Area2D"]
+position = Vector2(0, 8)
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_yl4yv")
+
+[node name="SwordHorizontal" type="Sprite2D" parent="."]
+texture_filter = 2
+material = SubResource("ShaderMaterial_3mchx")
+position = Vector2(40, -56)
+scale = Vector2(0.28125, 0.262969)
+texture = SubResource("ViewportTexture_qjp0r")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(32, -32)
+scale = Vector2(1.512, 1.512)
+shape = SubResource("CapsuleShape2D_01jcd")
+
+[node name="Knockback" parent="." instance=ExtResource("3_yubm2")]
+knockback_strength = 150
+
+[node name="Damaging" parent="." instance=ExtResource("4_vkekc")]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+snap_2d_vertices_to_pixel = true
+mesh_lod_threshold = 35.5
+fsr_sharpness = 0.4
+size_2d_override = Vector2i(512, 0)
+
+[node name="Node3D" type="Node3D" parent="SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.024, -8.458, 75)
+environment = SubResource("Environment_ku5oy")
+h_offset = -7.708
+v_offset = 0.942
+projection = 2
+current = true
+fov = 56.4
+frustum_offset = Vector2(-0.005, 0)
+near = 0.851
+far = 323.73
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.997483, 0.0709055, 0, -0.0709055, 0.997483, 0, 0, 0)
+
+[node name="Weapons" type="Node3D" parent="SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.74846e-07, 0, -1.74846e-07, 1, 0, 0, 0)
+rotation_order = 5
+
+[node name="RussianCossackShashquaSaber" type="MeshInstance3D" parent="SubViewport/Node3D/Weapons"]
+transform = Transform3D(1, 5.12227e-08, 0, -2.79397e-08, 1, 1.63913e-07, 0, -1.71363e-07, 1, 0, 0, 0)
+visible = false
+transparency = 0.56
+extra_cull_margin = 1036.96
+gi_mode = 2
+gi_lightmap_scale = 1
+mesh = ExtResource("4_7hosc")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_fygp3")
+
+[node name="MilitaryAxe" type="MeshInstance3D" parent="SubViewport/Node3D/Weapons"]
+transform = Transform3D(0.271119, 18.643, 0.0213814, -18.643, 0.27117, -0.0444346, -0.0447408, -0.020733, 18.6449, -38.317, 0, 0)
+mesh = ExtResource("5_yb5ig")
+skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_is37h")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

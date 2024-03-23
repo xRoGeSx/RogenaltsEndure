@@ -1,0 +1,260 @@
+[gd_scene load_steps=28 format=3 uid="uid://bficyq8ho88r7"]
+
+[ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_dhxf3"]
+[ext_resource type="Texture2D" uid="uid://cnd8xhcbef1fy" path="res://character/Chibi/Knight/Attack_1.png" id="3_koyee"]
+[ext_resource type="Texture2D" uid="uid://k0rnrn06glsk" path="res://character/Chibi/Knight/Hurt.png" id="3_upia7"]
+[ext_resource type="Texture2D" uid="uid://qvj23m7uywfv" path="res://character/Chibi/Knight/Idle.png" id="4_k1cyt"]
+[ext_resource type="PackedScene" uid="uid://bn7eucerm3gcc" path="res://Behaivours/Knockbackable.tscn" id="5_qy4h5"]
+[ext_resource type="PackedScene" uid="uid://bb0384s686hnl" path="res://Behaivours/Health.tscn" id="6_4d4bg"]
+[ext_resource type="PackedScene" uid="uid://dhgwpraauw4s2" path="res://Behaivours/DamageNumbers/DamageNumbers.tscn" id="7_e2oot"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8aolw"]
+atlas = ExtResource("3_upia7")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2omh"]
+atlas = ExtResource("3_upia7")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vr8r"]
+atlas = ExtResource("3_upia7")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mk5rd"]
+atlas = ExtResource("3_koyee")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cyfk"]
+atlas = ExtResource("3_koyee")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0kt8v"]
+atlas = ExtResource("3_koyee")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atdin"]
+atlas = ExtResource("3_koyee")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsgbm"]
+atlas = ExtResource("3_koyee")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ns31"]
+atlas = ExtResource("4_k1cyt")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bior3"]
+atlas = ExtResource("4_k1cyt")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aprtk"]
+atlas = ExtResource("4_k1cyt")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ki2pu"]
+atlas = ExtResource("4_k1cyt")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwf38"]
+atlas = ExtResource("4_k1cyt")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhqca"]
+atlas = ExtResource("4_k1cyt")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eb2us"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8aolw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2omh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vr8r")
+}],
+"loop": true,
+"name": &"Hurt",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mk5rd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cyfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0kt8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atdin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsgbm")
+}],
+"loop": true,
+"name": &"SwordAttack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ns31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bior3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aprtk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ki2pu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwf38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhqca")
+}],
+"loop": true,
+"name": &"SwordIdle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rftxk"]
+radius = 16.0
+height = 64.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bmf5x"]
+radius = 16.0
+height = 32.0
+
+[sub_resource type="Animation" id="Animation_20bmx"]
+resource_name = "GetHit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hurt:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hurt:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"Hurt", &"SwordIdle"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hurt:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_ywj1t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hurt:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hurt:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Hurt"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hurt:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w844u"]
+_data = {
+"GetHit": SubResource("Animation_20bmx"),
+"RESET": SubResource("Animation_ywj1t")
+}
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 12
+motion_mode = 1
+script = ExtResource("1_dhxf3")
+
+[node name="Hurt" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -24)
+sprite_frames = SubResource("SpriteFrames_eb2us")
+animation = &"Hurt"
+autoplay = "SwordIdle"
+frame = 1
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 7
+
+[node name="Hurtbox" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_rftxk")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 24)
+shape = SubResource("CapsuleShape2D_bmf5x")
+
+[node name="Knockbackable" parent="." instance=ExtResource("5_qy4h5")]
+
+[node name="Health" parent="." instance=ExtResource("6_4d4bg")]
+max_health = 5
+
+[node name="DamageNumbers" parent="." instance=ExtResource("7_e2oot")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w844u")
+}
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="health_decreased" from="Health" to="." method="_on_health_health_decreased"]
+[connection signal="health_decreased" from="Health" to="DamageNumbers" method="_on_health_health_decreased"]
+[connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]

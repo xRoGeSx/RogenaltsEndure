@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bw6722qmlxqfg"]
+
+[ext_resource type="Shader" path="res://Scenes/Skills/GraphConnectors/SkillNode.gdshader" id="1_ximox"]
+
+[resource]
+shader = ExtResource("1_ximox")
+shader_parameter/radius = 1.527
+shader_parameter/animate = true
+shader_parameter/square_scale = 0.354
+shader_parameter/opacity = 1.0
+shader_parameter/animation = 1.0

@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dvm470ngt5a83"]
+
+[ext_resource type="Shader" path="res://Scenes/Enemy/Enemy.gdshader" id="1_m8lvj"]
+
+[resource]
+shader = ExtResource("1_m8lvj")
+shader_parameter/progress = 0.0

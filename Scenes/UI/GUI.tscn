@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctrano05gq2wq"]
+
+[ext_resource type="PackedScene" uid="uid://dc3curru4mvs2" path="res://Scenes/UI/SkillPicker.tscn" id="1_aijqk"]
+
+[node name="GUI" type="CanvasLayer"]
+
+[node name="SkillPicker" parent="." instance=ExtResource("1_aijqk")]

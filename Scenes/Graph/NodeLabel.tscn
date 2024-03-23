@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dsbugd87lf78q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7vjmy"]
+font_size = 48
+outline_color = Color(1, 0, 1, 1)
+shadow_size = 2
+shadow_color = Color(1, 0, 0, 0)
+
+[node name="NodeLabel" type="Label"]
+offset_right = 1.0
+offset_bottom = 67.0
+label_settings = SubResource("LabelSettings_7vjmy")
+horizontal_alignment = 1
+vertical_alignment = 1

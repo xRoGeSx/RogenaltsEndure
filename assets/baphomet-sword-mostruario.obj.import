@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://duelano71pvi5"
+path="res://.godot/imported/baphomet-sword-mostruario.obj-1a8bc1da74d4740cf9ee1eb4ce7dbfa3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/baphomet-sword-mostruario.obj-1a8bc1da74d4740cf9ee1eb4ce7dbfa3.mesh"]
+
+source_file="res://assets/baphomet-sword-mostruario.obj"
+dest_files=["res://.godot/imported/baphomet-sword-mostruario.obj-1a8bc1da74d4740cf9ee1eb4ce7dbfa3.mesh", "res://.godot/imported/baphomet-sword-mostruario.obj-1a8bc1da74d4740cf9ee1eb4ce7dbfa3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

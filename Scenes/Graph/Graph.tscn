@@ -1,0 +1,117 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5sa4p13ocex7"]
+
+[ext_resource type="Script" path="res://Scenes/Graph/Graph.gd" id="1_35ie3"]
+[ext_resource type="PackedScene" uid="uid://dee4rewpofruc" path="res://Scenes/Graph/Node.tscn" id="2_78a44"]
+[ext_resource type="PackedScene" uid="uid://fk3mydw123hy" path="res://Scenes/Skills/GraphConnectors/SkillNode.tscn" id="4_hvqae"]
+[ext_resource type="Texture2D" uid="uid://bnklddlrrievw" path="res://icon.svg" id="4_mtgor"]
+
+[node name="Graph" type="Panel"]
+custom_minimum_size = Vector2(10000, 10000)
+layout_direction = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_35ie3")
+
+[node name="Content" type="Node2D" parent="."]
+
+[node name="Edges" type="Node2D" parent="Content"]
+
+[node name="Nodes" type="Node2D" parent="Content"]
+position = Vector2(5000, 5000)
+
+[node name="Node" parent="Content/Nodes" instance=ExtResource("2_78a44")]
+offset_left = -64.0
+offset_top = -68.0
+offset_right = 72.0
+offset_bottom = 68.0
+nodeIcon = ExtResource("4_mtgor")
+active = true
+connections = Array[NodePath]([NodePath("../SkillNode")])
+metadata/_edit_use_anchors_ = true
+
+[node name="Node2" parent="Content/Nodes" instance=ExtResource("2_78a44")]
+offset_left = -624.0
+offset_top = 4844.0
+offset_right = -488.0
+offset_bottom = 4980.0
+nodeIcon = ExtResource("4_mtgor")
+active = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Node3" parent="Content/Nodes" instance=ExtResource("2_78a44")]
+offset_left = -4984.0
+offset_top = -396.0
+offset_right = -4848.0
+offset_bottom = -260.0
+nodeIcon = ExtResource("4_mtgor")
+active = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Node4" parent="Content/Nodes" instance=ExtResource("2_78a44")]
+offset_left = -640.0
+offset_top = -4964.0
+offset_right = -504.0
+offset_bottom = -4828.0
+nodeIcon = ExtResource("4_mtgor")
+active = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Node5" parent="Content/Nodes" instance=ExtResource("2_78a44")]
+offset_left = 4848.0
+offset_top = -404.0
+offset_right = 4984.0
+offset_bottom = -268.0
+nodeIcon = ExtResource("4_mtgor")
+active = true
+metadata/_edit_use_anchors_ = true
+
+[node name="SkillNode" parent="Content/Nodes" instance=ExtResource("4_hvqae")]
+offset_left = -328.0
+offset_top = -80.0
+offset_right = -192.0
+offset_bottom = 56.0
+skillName = 1
+connections = Array[NodePath]([NodePath("../Node"), NodePath("../SkillNode2"), NodePath("../Node6")])
+metadata/_edit_use_anchors_ = true
+
+[node name="SkillNode2" parent="Content/Nodes" instance=ExtResource("4_hvqae")]
+offset_left = -88.0
+offset_top = -312.0
+offset_right = 48.0
+offset_bottom = -176.0
+connections = Array[NodePath]([NodePath("../SkillNode"), NodePath("../SkillNode3")])
+metadata/_edit_use_anchors_ = true
+
+[node name="SkillNode4" parent="Content/Nodes" instance=ExtResource("4_hvqae")]
+offset_left = -80.0
+offset_top = 176.0
+offset_right = 56.0
+offset_bottom = 312.0
+connections = Array[NodePath]([NodePath("../SkillNode"), NodePath("../SkillNode3"), NodePath("../Node6"), NodePath("../Node7")])
+metadata/_edit_use_anchors_ = true
+
+[node name="SkillNode3" parent="Content/Nodes" instance=ExtResource("4_hvqae")]
+offset_left = 152.0
+offset_top = -72.0
+offset_right = 288.0
+skillName = 2
+connections = Array[NodePath]([NodePath("../SkillNode2"), NodePath("../SkillNode4")])
+metadata/_edit_use_anchors_ = true
+
+[node name="Node6" parent="Content/Nodes" instance=ExtResource("2_78a44")]
+offset_left = -288.0
+offset_top = 628.0
+offset_right = -152.0
+offset_bottom = 764.0
+connections = Array[NodePath]([NodePath("../Node7"), NodePath("../SkillNode4"), NodePath("../SkillNode")])
+
+[node name="Node7" parent="Content/Nodes" instance=ExtResource("2_78a44")]
+offset_left = 144.0
+offset_top = 652.0
+offset_right = 280.0
+offset_bottom = 788.0
+connections = Array[NodePath]([NodePath("../SkillNode4"), NodePath("../Node6")])

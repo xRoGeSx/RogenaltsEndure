@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc3curru4mvs2"]
+
+[ext_resource type="Script" path="res://Scenes/UI/SkillPicker.gd" id="1_k843y"]
+[ext_resource type="PackedScene" uid="uid://c5sa4p13ocex7" path="res://Scenes/Graph/Graph.tscn" id="1_tve0w"]
+
+[node name="SkillPicker" type="Container"]
+process_mode = 3
+visible = false
+custom_minimum_size = Vector2(500, 500)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4423.9
+offset_top = -4676.0
+offset_right = 4424.1
+offset_bottom = 4676.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_k843y")
+metadata/_edit_use_anchors_ = true
+
+[node name="Graph" parent="." instance=ExtResource("1_tve0w")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4

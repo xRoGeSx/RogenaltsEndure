@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://fk3mydw123hy"]
+
+[ext_resource type="Material" uid="uid://bw6722qmlxqfg" path="res://Scenes/Skills/GraphConnectors/SkillNodeMaterial.tres" id="1_lnuac"]
+[ext_resource type="Texture2D" uid="uid://bnklddlrrievw" path="res://icon.svg" id="2_y5j35"]
+[ext_resource type="Script" path="res://Scenes/Skills/GraphConnectors/SkillNode.gd" id="3_ru5x8"]
+
+[node name="SkillNode" type="Button"]
+material = ExtResource("1_lnuac")
+offset_right = 64.0
+offset_bottom = 64.0
+icon = ExtResource("2_y5j35")
+script = ExtResource("3_ru5x8")
+nodeName = "CustomSkillNode"
+
+[connection signal="activeStateChanged" from="." to="." method="_on_active_state_changed"]
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
